@@ -4,7 +4,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 
 const navItems = [
     { name: 'Home', href: '/' },
-    { name: 'Works', href: '/projects' },
+    { name: 'Projects', href: '/projects' },
     { name: 'About', href: '/about' },
     { name: 'Contact', href: '/contact' } 
 ];
@@ -79,11 +79,22 @@ const HoverItalicText = ({ text, onClick, isActive }) => {
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const [activeTab, setActiveTab] = useState('Works');
+    const [activeTab, setActiveTab] = useState('');
     
     // Router hooks
     const navigate = useNavigate();
     const location = useLocation();
+
+    useEffect(() => {
+        const currentPath = location.pathname;
+        const activeItem = navItems.find(item => item.href === currentPath);
+        
+        if (activeItem) {
+            setActiveTab(activeItem.name);
+        } else if (currentPath === '/') {
+            setActiveTab('Home');
+        }
+    }, [location.pathname]);
 
     // Lock body scroll when menu is open
     useEffect(() => {
