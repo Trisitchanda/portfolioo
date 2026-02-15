@@ -92,7 +92,7 @@ const Contact = () => {
     }, []);
 
     return (
-        <section className="relative pt-24 pb-12 flex flex-col justify-between overflow-hidden">
+        <section id='background' className="relative pt-24 pb-12 flex flex-col justify-between overflow-hidden">
             <motion.div
                 className="absolute inset-0 pointer-events-none"
                 onViewportEnter={() => document.body.style.backgroundColor = '#F5F5F0'}
