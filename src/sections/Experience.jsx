@@ -57,7 +57,7 @@ const Experience = () => {
     };
 
     return (
-        <section ref={containerRef} className="relative h-[300vh] bg-white">
+        <section ref={containerRef} id='experience' className="relative h-[300vh] bg-white">
             <div className="sticky top-0 h-screen overflow-hidden flex flex-col items-center justify-center transition-colors duration-700 ease-in-out"
                 style={{ backgroundColor: experiences[activeIndex]?.color || '#ffffff' }}
             >
