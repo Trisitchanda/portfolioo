@@ -1,8 +1,10 @@
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import Matter from 'matter-js';
+import usePortfolioData from '../hooks/usePortfolioData';
 
 const Contact = () => {
+    const { data: { contact } } = usePortfolioData();
     const sceneRef = useRef(null);
     const engineRef = useRef(null);
 
@@ -106,7 +108,7 @@ const Contact = () => {
                     transition={{ duration: 0.9, ease: "easeOut" }}
                     className="text-6xl md:text-8xl lg:text-9xl font-serif leading-[0.95] text-black"
                 >
-                    Let’s collaborate &
+                    {contact.headlinePart1}
                 </motion.h2>
 
                 <motion.h2
@@ -115,12 +117,12 @@ const Contact = () => {
                     transition={{ duration: 0.9, ease: "easeOut", delay: 0.1 }}
                     className="text-6xl md:text-8xl lg:text-9xl font-serif leading-[0.95] text-black"
                 >
-                    build something meaningful.
+                    {contact.headlinePart2}
                 </motion.h2>
 
                 {/* CONTACT BUTTON */}
                 <motion.a
-                    href="mailto:hello@yourmail.com"
+                    href={`mailto:${contact.email}`}
                     initial={{ rotate: -18 }}
                     whileHover={{ rotate: 0, scale: 1.06 }}
                     whileTap={{ scale: 0.96 }}
@@ -152,7 +154,7 @@ const Contact = () => {
             />
 
             <div className="absolute bottom-6 w-full text-center text-sm text-gray-400 font-sans uppercase tracking-widest z-20 pointer-events-none">
-                © 2026 Trisit. All Rights Reserved.
+                © {contact.copyrightYear} {contact.copyrightName}. All Rights Reserved.
             </div>
         </section>
     );

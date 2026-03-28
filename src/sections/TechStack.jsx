@@ -1,13 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-
-const stack = [
-    { category: "Frontend", items: ["React", "Next.js", "Tailwind CSS", "Framer Motion", "Three.js"] },
-    { category: "Backend", items: ["Node.js", "Express", "PostgreSQL", "Supabase", "GraphQL"] },
-    { category: "Design", items: ["Figma", "Adobe CC", "Blender", "UI/UX", "Prototyping"] }
-];
+import usePortfolioData from '../hooks/usePortfolioData';
 
 const TechStack = () => {
+    const { data: { techStack: stack } } = usePortfolioData();
     return (
         <section className="py-24 bg-[#F5F5F0] text-[#1A1A1A] overflow-hidden">
             <div className="mb-16 text-center px-6">

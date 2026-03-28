@@ -1,34 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useNavigate, useLocation } from 'react-router-dom'; 
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const navItems = [
     { name: 'Home', href: '/' },
     { name: 'Projects', href: '/projects' },
     { name: 'About', href: '/about' },
-    { name: 'Contact', href: '/contact' } 
+    { name: 'Contact', href: '/contact' }
 ];
 
 const ActiveLine = () => {
     return (
         <svg
             className="absolute w-[125%] h-[150%] -left-[12%] -top-[15%] pointer-events-none overflow-visible"
-            viewBox="0 0 100 50" 
+            viewBox="0 0 100 50"
             preserveAspectRatio="none"
         >
             <motion.path
                 d="M10,15 Q40,5 90,15 T90,35 T10,35 T10,15 L25,12"
                 fill="none"
-                stroke="#FF3333" 
-                strokeWidth="2.5" 
+                stroke="#FF3333"
+                strokeWidth="2.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 initial={{ pathLength: 0, opacity: 0 }}
                 animate={{ pathLength: 1, opacity: 1 }}
-                transition={{ 
-                    duration: 1.5, 
-                    ease: "easeInOut", 
-                    delay: 0.2 
+                transition={{
+                    duration: 1.5,
+                    ease: "easeInOut",
+                    delay: 0.2
                 }}
             />
         </svg>
@@ -49,21 +49,21 @@ const HoverItalicText = ({ text, onClick, isActive }) => {
                         key={i}
                         className="text-5xl md:text-8xl font-serif text-[#1A1A1A] uppercase tracking-tight inline-block origin-bottom-left"
                         variants={{
-                            initial: { 
-                                fontStyle: 'normal', 
-                                y: 0, 
+                            initial: {
+                                fontStyle: 'normal',
+                                y: 0,
                                 rotate: 0,
-                                x: 0 
+                                x: 0
                             },
                             hover: {
                                 fontStyle: 'italic',
                                 y: -2,
-                                rotate: 10, 
-                                x: 2, 
+                                rotate: 10,
+                                x: 2,
                                 transition: {
-                                    duration: 0.8, 
+                                    duration: 0.8,
                                     ease: [0.2, 0.65, 0.3, 0.9],
-                                    delay: i * 0.05 
+                                    delay: i * 0.05
                                 }
                             }
                         }}
@@ -80,7 +80,7 @@ const HoverItalicText = ({ text, onClick, isActive }) => {
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [activeTab, setActiveTab] = useState('');
-    
+
     // Router hooks
     const navigate = useNavigate();
     const location = useLocation();
@@ -88,7 +88,7 @@ const Navbar = () => {
     useEffect(() => {
         const currentPath = location.pathname;
         const activeItem = navItems.find(item => item.href === currentPath);
-        
+
         if (activeItem) {
             setActiveTab(activeItem.name);
         } else if (currentPath === '/') {
@@ -110,11 +110,11 @@ const Navbar = () => {
     // Navigation Handler
     const handleNavigation = (item) => {
         setActiveTab(item.name);
-        
+
         // Wait for circle animation to finish a bit (800ms match roughly animation feel)
         setTimeout(() => {
             setIsOpen(false);
-            
+
             if (item.href.startsWith('/')) {
                 // Route navigation (e.g., /contact)
                 navigate(item.href);
@@ -133,7 +133,7 @@ const Navbar = () => {
                     if (element) element.scrollIntoView({ behavior: 'smooth' });
                 }
             }
-        }, 1200); 
+        }, 1200);
     };
 
     return (

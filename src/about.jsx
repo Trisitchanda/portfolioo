@@ -1,9 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowDown, Smile, Star, Download } from 'lucide-react'; // Added Download Icon
-
-// !!! IMPORT YOUR IMAGE
-const SwimmerImg = "/swimming.png"; 
+import usePortfolioData from './hooks/usePortfolioData';
 
 // --- COMPONENTS ---
 
@@ -34,7 +32,7 @@ const Sticker = ({ children, delay, rotate, x, y }) => {
     );
 };
 
-const BlobImage = () => {
+const BlobImage = ({ src }) => {
     return (
         <motion.div 
             className="relative w-full max-w-xl aspect-square flex items-center justify-center"
@@ -55,7 +53,7 @@ const BlobImage = () => {
                 style={{ borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%" }}
             >
                 <img 
-                    src={SwimmerImg} 
+                    src={src} 
                     alt="Floating" 
                     className="w-full h-full object-cover scale-110 opacity-90 mix-blend-multiply" 
                 />
@@ -65,6 +63,7 @@ const BlobImage = () => {
 };
 
 const AboutPage = () => {
+    const { data: { about, hero } } = usePortfolioData();
     const containerRef = useRef(null);
     const { scrollYProgress } = useScroll({ target: containerRef });
     
@@ -78,7 +77,7 @@ const AboutPage = () => {
             <section className="relative h-screen w-full flex flex-col justify-between pt-32 pb-10 px-6 md:px-12 overflow-hidden">
                 <div className="flex justify-between items-start w-full z-20 mix-blend-difference text-black md:text-inherit">
                     <div className="text-xs font-sans uppercase tracking-[0.2em] opacity-60">
-                        Based in Kolkata <br/> Est. 2024
+                        {about.location} <br/> {about.established}
                     </div>
                     <div className="text-xs font-sans uppercase tracking-[0.2em] text-right opacity-60">
                         Scroll for <br/> Bio
@@ -96,7 +95,7 @@ const AboutPage = () => {
                             initial={{ scale: 1.3 }}
                             animate={{ scale: 1 }}
                             transition={{ duration: 2, ease: "easeOut" }}
-                            src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=2864&auto=format&fit=crop" 
+                            src={about.images.portrait} 
                             alt="Portrait" 
                             className="w-full h-full object-cover grayscale opacity-90"
                         />
@@ -112,7 +111,7 @@ const AboutPage = () => {
                         transition={{ duration: 1, delay: 0.5 }}
                         className="text-[18vw] leading-[0.75] font-serif text-center text-[#1A1A1A] mix-blend-difference pointer-events-none select-none"
                     >
-                        TRISIT
+                        {hero.name.toUpperCase()}
                     </motion.h1>
                     
                     <motion.div 
@@ -121,7 +120,7 @@ const AboutPage = () => {
                         transition={{ delay: 1 }}
                         className="flex justify-between items-end w-full mt-4 border-t border-black/10 pt-4"
                     >
-                        <span className="text-sm font-serif italic">Director & Illustrator</span>
+                        <span className="text-sm font-serif italic">{about.role}</span>
                         <div className="flex gap-2 text-[10px] uppercase tracking-widest opacity-50">
                             <span>(01)</span>
                             <span>About Me</span>
@@ -134,7 +133,7 @@ const AboutPage = () => {
             {/* --- SECTION 2: THE POOL & BIO (UPDATED) --- */}
             <section className="min-h-screen flex flex-col items-center justify-center py-32 px-6 bg-[#F3F0E7] relative z-10">
                 
-                <BlobImage />
+                <BlobImage src={about.images.swimmer} />
 
                 {/* --- NEW: Minimalist Bio Section --- */}
                 <div className="mt-20 w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32 items-start relative z-10">
@@ -150,23 +149,23 @@ const AboutPage = () => {
                             ✳
                         </motion.div>
                         <h2 className="text-3xl md:text-5xl font-serif leading-tight text-[#1A1A1A]">
-                            On my free time you can find me trying to <span className="italic text-[#8FA3AD]">rescue my plants</span>.
+                            {about.bioBigTextPart1}<span className="italic text-[#8FA3AD]">{about.bioBigTextItalic}</span>.
                         </h2>
                     </div>
 
                     {/* Right Column: Detailed Bio & CV Button */}
                     <div className="space-y-8 pt-4">
                         <p className="text-lg font-serif leading-relaxed opacity-80">
-                            I am a multidisciplinary designer focusing on digital experiences. My work sits at the intersection of art, technology, and human interaction.
+                            {about.bioDescription1}
                         </p>
                         <p className="text-sm font-sans uppercase tracking-wide opacity-50 leading-relaxed">
-                            Currently based in Kolkata, working with brands to tell stories that matter.
+                            {about.bioDescription2}
                         </p>
 
                         {/* --- THE CV BUTTON --- */}
                         <motion.a 
-                            href="/path-to-your-cv.pdf" // Put your CV in the public folder
-                            download="Trisit_CV.pdf"
+                            href={about.cvLink} // Put your CV in the public folder
+                            download={`${hero.name}_CV.pdf`}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             className="inline-flex items-center gap-3 px-8 py-4 bg-[#1A1A1A] text-[#F3F0E7] rounded-full font-sans text-xs uppercase tracking-widest hover:bg-[#FF3333] transition-colors duration-300 group"

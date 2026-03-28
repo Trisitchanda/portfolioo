@@ -1,35 +1,10 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
-
-const services = [
-    {
-        id: '01',
-        title: 'Creative Direction',
-        description: 'Visual storytelling and brand identity.',
-        tags: ['Branding', 'Art Direction', 'Strategy']
-    },
-    {
-        id: '02',
-        title: 'FullStack Developer',
-        description: 'MERN stack applications with a problem-first mindset.',
-        tags: ['MERN', 'Critical Thinking']
-    },
-    // {
-    //     id: '03',
-    //     title: 'UI/UX Design',
-    //     description: 'User-centric interfaces and experiences.',
-    //     tags: ['Prototyping', 'Design Systems', 'Motion']
-    // },
-    // {
-    //     id: '04',
-    //     title: 'Illustration',
-    //     description: 'Custom visuals and character design.',
-    //     tags: ['Digital', 'Editorial', '3D Asset']
-    // }
-];
+import usePortfolioData from '../hooks/usePortfolioData';
 
 const TechPlayground = () => {
+    const { data: { services } } = usePortfolioData();
     const [hoveredService, setHoveredService] = useState(null);
 
     return (

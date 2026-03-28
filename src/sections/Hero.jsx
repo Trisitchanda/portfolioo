@@ -1,13 +1,17 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import usePortfolioData from '../hooks/usePortfolioData';
 
 const Hero = () => {
+    const { data } = usePortfolioData();
+    const { hero } = data;
+
     return (
         <section className="relative w-full h-screen flex flex-col justify-center items-center overflow-hidden bg-[#F3eee8] px-4 md:px-0" data-bgcolor="#F3eee8">
 
             {/* Pink 'Art' Watermark Background - Based on Reference */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 opacity-40">
-                <span className="text-[40vw] md:text-[35vw] font-serif text-accent-pink leading-none translate-y-20">CS</span>
+                <span className="text-[40vw] md:text-[35vw] font-serif text-accent-pink leading-none translate-y-20">{hero.watermark}</span>
             </div>
 
             {/* Main Content Layer */}
@@ -41,7 +45,7 @@ const Hero = () => {
                         animate={{ opacity: 1 }}
                         transition={{ duration: 1, delay: 0.8 }}
                     >
-                        ( Hi! I'm Trisit, a student and Developer. Welcome to my digital garden. )
+                        {hero.bio}
                     </motion.div>
 
                 </div>
@@ -64,7 +68,7 @@ const Hero = () => {
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ duration: 1.2, delay: 0.4, ease: [0.6, 0.01, 0.05, 0.9] }}
                     >
-                        Trisit
+                        {hero.name}
                     </motion.h2>
                 </div>
 
@@ -75,7 +79,7 @@ const Hero = () => {
                     animate={{ opacity: 1 }}
                     transition={{ duration: 1, delay: 1 }}
                 >
-                    coding, but make it chill
+                    {hero.role}
                 </motion.p>
             </div>
 

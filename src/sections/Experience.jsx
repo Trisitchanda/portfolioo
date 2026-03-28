@@ -1,37 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform, useMotionValueEvent } from 'framer-motion';
-
-const experiences = [
-    {
-        id: 1,
-        year: "2024",
-        role: "Senior Frontend Engineer",
-        company: "TechFlow Solutions",
-        description: "Architecting the next generation of enterprise SaaS. Optimized core rendering engine improving performance by 40%.",
-        color: "#E0F2FE", // Sky Blue
-        rotate: -2
-    },
-    {
-        id: 2,
-        year: "2022",
-        role: "Creative Developer",
-        company: "Pixel Perfect Agency",
-        description: "Blurring the line between websites and art. Created award-winning interactive campaigns for global fashion brands.",
-        color: "#FCE7F3", // Pink
-        rotate: 1
-    },
-    {
-        id: 3,
-        year: "2021",
-        role: "Full Stack Developer",
-        company: "StartUp Inc.",
-        description: "Built the foundation. Scaled backend APIs to handle 100k+ concurrent users while shipping features weekly.",
-        color: "#FEF3C7", // Amber
-        rotate: -1
-    }
-];
+import usePortfolioData from '../hooks/usePortfolioData';
 
 const Experience = () => {
+    const { data: { experiences } } = usePortfolioData();
     const containerRef = useRef(null);
     const [activeIndex, setActiveIndex] = useState(0);
 

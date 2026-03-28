@@ -1,45 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
-
-const projects = [
-    {
-        id: 1,
-        title: "AI Mental Health",
-        category: "Mobile App • AI",
-        image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop",
-        year: "2023",
-        link: "https://google.com",
-        color: "#d4e4bc" 
-    },
-    {
-        id: 2,
-        title: "EcoTrack Analytics",
-        category: "Web Dashboard",
-        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2670&auto=format&fit=crop",
-        year: "2024",
-        link: "https://google.com",
-        color: "#e8c3cb" 
-    },
-    {
-        id: 3,
-        title: "Nebula System",
-        category: "Open Source",
-        image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2670&auto=format&fit=crop",
-        year: "2022",
-        link: "https://google.com",
-        color: "#c3d1e8" 
-    },
-    {
-        id: 4,
-        title: "CryptoVault",
-        category: "Fintech • Web3",
-        image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=2832&auto=format&fit=crop",
-        year: "2023",
-        link: "https://google.com",
-        color: "#e8dcc3" 
-    }
-];
+import usePortfolioData from '../hooks/usePortfolioData';
 
 // --- CARD COMPONENT ---
 const Card = ({ project, index, total, scrollYProgress }) => {
@@ -125,6 +87,7 @@ const Card = ({ project, index, total, scrollYProgress }) => {
 };
 
 const Projects = () => {
+    const { data: { projects } } = usePortfolioData();
     const containerRef = useRef(null);
     const { scrollYProgress } = useScroll({
         target: containerRef,
