@@ -32,7 +32,7 @@ function App() {
                             <Projects />
                             <TechStack />
                             <Experience />
-                            <Contact /> Optional: Add old footer here if you want
+                            <Contact />
                         </>
                     } />
 

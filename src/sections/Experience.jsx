@@ -7,6 +7,8 @@ const Experience = () => {
     const containerRef = useRef(null);
     const [activeIndex, setActiveIndex] = useState(0);
 
+    if (!experiences?.length) return null;
+
     const { scrollYProgress } = useScroll({
         target: containerRef,
         offset: ["start start", "end end"]
@@ -15,8 +17,8 @@ const Experience = () => {
     // Determine active card based on scroll or click
     useMotionValueEvent(scrollYProgress, "change", (latest) => {
         const index = Math.min(
-            Math.floor(latest * experiences.length),
-            experiences.length - 1
+            Math.floor(latest * (experiences?.length || 0)),
+            (experiences?.length || 0) - 1
         );
         setActiveIndex(index);
     });
@@ -31,7 +33,7 @@ const Experience = () => {
     return (
         <section ref={containerRef} id='experience' className="relative h-[300vh] bg-white">
             <div className="sticky top-0 h-screen overflow-hidden flex flex-col items-center justify-center transition-colors duration-700 ease-in-out"
-                style={{ backgroundColor: experiences[activeIndex]?.color || '#ffffff' }}
+                style={{ backgroundColor: experiences?.[activeIndex]?.color || '#ffffff' }}
             >
                 {/* Background Typography */}
                 <div className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none">
@@ -43,7 +45,7 @@ const Experience = () => {
                         transition={{ duration: 0.5 }}
                         className="text-[20vw] font-serif font-bold text-black/5 select-none whitespace-nowrap"
                     >
-                        {experiences[activeIndex].year}
+                        {experiences?.[activeIndex]?.year}
                     </motion.span>
                 </div>
 
@@ -55,7 +57,7 @@ const Experience = () => {
                 {/* Card Stack */}
                 <div className="relative w-full max-w-md md:max-w-2xl aspect-[3/2] flex items-center justify-center perspective-1000">
                     <div className="relative w-full h-full">
-                        {experiences.map((exp, index) => {
+                        {experiences?.map((exp, index) => {
                             const isActive = index === activeIndex;
                             const isPast = index < activeIndex;
 
@@ -124,7 +126,7 @@ const Experience = () => {
 
                 {/* Progress Indicators */}
                 <div className="absolute bottom-12 flex gap-4 z-20">
-                    {experiences.map((_, index) => (
+                    {experiences?.map((_, index) => (
                         <button
                             key={index}
                             onClick={() => setActiveIndex(index)}

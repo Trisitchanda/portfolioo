@@ -1,43 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useMotionValue } from 'framer-motion';
 import { ArrowUpRight, Github, Globe } from 'lucide-react';
-
-// --- DATA (Same as before) ---
-const projects = [
-    {
-        id: 1,
-        title: "Bangs Salon",
-        category: "Branding",
-        year: "2023",
-        description: "A complete digital rebrand for a high-end salon. We built a booking system that increased appointments by 40% using a custom scheduler.",
-        tech: ["React", "Node.js", "Tailwind", "Framer Motion"],
-        image: "https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=2669&auto=format&fit=crop",
-        color: "#E8D4D8",
-        links: { live: "https://google.com", github: "https://github.com" }
-    },
-    {
-        id: 2,
-        title: "Liberty Korea",
-        category: "Editorial",
-        year: "2024",
-        description: "An immersive storytelling platform highlighting the people behind the politics. Features parallax scrolling and dynamic audio integration.",
-        tech: ["Next.js", "WebGL", "Three.js", "CMS"],
-        image: "https://images.unsplash.com/photo-1547891654-e66ed7ebb968?q=80&w=2670&auto=format&fit=crop",
-        color: "#E0E8D8",
-        links: { live: "https://google.com", github: "https://github.com" }
-    },
-    {
-        id: 3,
-        title: "Cube Energy",
-        category: "Campaign",
-        year: "2022",
-        description: "A dashboard for tracking renewable energy usage in real-time. Designed to be accessible and data-rich without overwhelming the user.",
-        tech: ["Vue", "D3.js", "Firebase", "SCSS"],
-        image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2670&auto=format&fit=crop",
-        color: "#D8E0E8",
-        links: { live: "https://google.com", github: "https://github.com" }
-    }
-];
+import usePortfolioData from './hooks/usePortfolioData';
 
 const now = new Date();
 const formatted = now.toLocaleString("en-IN", { timeZone: "Asia/Kolkata", dateStyle: "full", timeStyle: "short", });
@@ -191,7 +155,7 @@ const Project = ({ project, index, setHovered }) => {
             >
                 <div className="w-full h-full overflow-hidden relative">
                     {/* The Parallax Image with Hover Zoom */}
-                    <motion.div style={{ y }} className="w-full h-[120%] -mt-[10%]">
+                    <motion.div style={{ y }} className="w-full h-[120%] -mt-[10%] bg-gray-900">
                         <img
                             src={project.image}
                             alt={project.title}
@@ -207,6 +171,7 @@ const Project = ({ project, index, setHovered }) => {
 };
 
 const Works = () => {
+    const { data: { projects } } = usePortfolioData();
     const [isHovered, setHovered] = useState(false);
 
     return (
@@ -225,14 +190,14 @@ const Works = () => {
                     transition={{ duration: 1 }}
                     className="text-xs font-sans uppercase tracking-[0.4em] mb-6"
                 >
-                    Selected Works (2023-2026)
+                    Works 
                 </motion.p>
                 <h1 className="text-[12vw] font-serif leading-[0.8] overflow-hidden">
                     <motion.span initial={{ y: "100%" }} animate={{ y: 0 }} transition={{ duration: 1, ease: [0.76, 0, 0.24, 1] }} className="block">
-                        Featured
+                        Some
                     </motion.span>
                     <motion.span initial={{ y: "100%" }} animate={{ y: 0 }} transition={{ duration: 1, delay: 0.1, ease: [0.76, 0, 0.24, 1] }} className="block italic">
-                        Cases
+                        Projects
                     </motion.span>
                 </h1>
             </div>

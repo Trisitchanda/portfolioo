@@ -100,7 +100,7 @@ const Contact = () => {
                 onViewportEnter={() => document.body.style.backgroundColor = '#F5F5F0'}
                 viewport={{ margin: "-40% 0px -40% 0px" }}
             />
-            <div className="relative z-10 max-w-7xl w-full px-6 md:px-12">
+            <div className="relative z-10 max-w-7xl w-full px-6 md:px-12 pb-24 md:pb-0">
                 {/* Headline */}
                 <motion.h2
                     initial={{ y: 40, opacity: 0 }}
@@ -121,22 +121,47 @@ const Contact = () => {
                 </motion.h2>
 
                 {/* CONTACT BUTTON */}
+                {/* CONTACT BUTTON */}
                 <motion.a
                     href={`mailto:${contact.email}`}
-                    initial={{ rotate: -18 }}
-                    whileHover={{ rotate: 0, scale: 1.06 }}
+                    initial={{ rotate: -12 }}
+                    whileHover={{ rotate: 0, scale: 1.05 }}
                     whileTap={{ scale: 0.96 }}
-                    transition={{ type: "spring", stiffness: 180, damping: 14 }}
+                    transition={{
+                        type: "spring",
+                        stiffness: 180,
+                        damping: 14
+                    }}
                     className="
-            absolute right-8 md:right-16 bottom-[-90px] md:bottom-[-120px]
-            w-48 h-48 md:w-56 md:h-56
-            rounded-full bg-white
-            flex items-center justify-center
-            text-black
-            font-sans uppercase tracking-widest text-sm
-            shadow-[0_40px_80px_rgba(0,0,0,0.25)]
-            cursor-pointer
-          "
+        absolute
+        left-1/2 md:left-auto
+        -translate-x-1/2 md:translate-x-0
+        md:right-16
+        bottom-[-60px] md:bottom-[-120px]
+
+        w-32 h-32
+        sm:w-40 sm:h-40
+        md:w-56 md:h-56
+
+        rounded-full
+        bg-white
+        flex items-center justify-center
+
+        text-black
+        font-sans
+        uppercase
+        tracking-[0.25em]
+
+        text-[10px]
+        sm:text-xs
+        md:text-sm
+
+        shadow-[0_20px_40px_rgba(0,0,0,0.15)]
+        md:shadow-[0_40px_80px_rgba(0,0,0,0.25)]
+
+        cursor-pointer
+        z-20
+    "
                 >
                     <span className="text-center leading-tight">
                         Contact

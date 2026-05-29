@@ -211,8 +211,8 @@ const AboutPage = () => {
 
                         <Sticker delay={0.2} rotate={5} x="70%" y="15%">
                             <div className="w-32 h-32 rounded-full bg-white flex items-center justify-center p-1 border border-black/5 shadow-sm">
-                                <div className="w-full h-full rounded-full border border-dashed border-black/20 animate-spin-slow flex items-center justify-center text-[9px] uppercase font-bold tracking-widest text-center">
-                                    The Studio <br/> 2026
+                                <div className="w-full h-full rounded-full border border-dashed border-black/20 animate-spin-slow flex items-center justify-center text-[13px] uppercase font-bold tracking-widest text-center">
+                                    (⁠◠⁠‿⁠◕⁠)
                                 </div>
                             </div>
                         </Sticker>
