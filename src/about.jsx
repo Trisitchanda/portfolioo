@@ -5,7 +5,7 @@ import usePortfolioData from './hooks/usePortfolioData';
 
 // --- COMPONENTS ---
 
-const Sticker = ({ children, delay, rotate, x, y }) => {
+export const Sticker = ({ children, delay, rotate, x, y }) => {
     return (
         <motion.div
             drag

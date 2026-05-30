@@ -202,8 +202,8 @@ const Navbar = () => {
 
                         {/* Footer */}
                         <div className="absolute bottom-12 w-full px-12 flex justify-between text-sm font-sans uppercase tracking-widest text-[#1A1A1A]/60">
-                            <span className="cursor-pointer hover:text-black transition-colors">Behance</span>
-                            <span className="cursor-pointer hover:text-black transition-colors">Instagram</span>
+                            <span className="hover:text-black transition-colors">নমস্কার</span>
+                            <span className="hover:text-black transition-colors">こんにちは</span>
                         </div>
                     </motion.div>
                 )}

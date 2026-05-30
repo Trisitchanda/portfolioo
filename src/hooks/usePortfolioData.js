@@ -1,5 +1,12 @@
 import { useState } from 'react';
 
+// Cloudinary assets - update these variables with your Cloudinary URLs
+export const BITEZZY_IMAGE = "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=2680&auto=format&fit=crop";
+export const LUMINA_IMAGE = "https://res.cloudinary.com/diod4o44f/image/upload/v1780156333/moonn_wtpdh0.png";
+export const SWIMMER_IMAGE = "https://res.cloudinary.com/diod4o44f/image/upload/v1780156350/swimming_rx3clr.png";
+export const PORTRAIT_IMAGE = "https://res.cloudinary.com/diod4o44f/image/upload/v1780074740/WhatsApp_Image_2026-05-29_at_22.41.17_ron8v8.jpg";
+export const CV_PDF = "/cv.pdf";
+
 const initialData = {
     hero: {
         name: "Trisit",
@@ -44,7 +51,7 @@ const initialData = {
             year: "2025",
             description: "An intelligent recipe platform and SaaS featuring AI-assisted search, personalized meal planning, cost & nutrition insights, and razorpay payment integration.",
             tech: ["React", "Redux", "Node.js", "Express", "MongoDB", "Redis", "Tailwind", "Framer Motion"],
-            image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=2680&auto=format&fit=crop",
+            image: BITEZZY_IMAGE,
             color: "#FFE2CD",
             link: "https://bitezzy.store",
             links: { live: "https://bitezzy.store", github: "https://github.com/subhranil002/BiteBot-Frontend" }
@@ -56,26 +63,26 @@ const initialData = {
             year: "2026",
             description: "A subscription platform for creators featuring a 3D WebGL showcase, customizable membership tiers, robust analytics, and a secure media upload flow.",
             tech: ["React", "Redux", "Node.js", "Express", "MongoDB", "Three.js", "Tailwind", "Framer Motion"],
-            image: "/moonn.png",
+            image: LUMINA_IMAGE,
             color: "#DCE4FF",
             link: "https://luminaaaa.vercel.app",
             links: { live: "https://luminaaaa.vercel.app", github: "https://github.com/Trisitchanda/Lumina-forntend" }
         }
     ],
     techStack: [
-        { category: "Frontend", items: ["React", "Next.js", "Tailwind CSS", "Framer Motion", "Three.js"] },
-        { category: "Backend", items: ["Node.js", "Express", "PostgreSQL", "Supabase", "GraphQL"] },
-        { category: "Design", items: ["Figma", "Adobe CC", "Blender", "UI/UX", "Prototyping"] }
+        { category: "Frontend", items: ["React", "Next.js", "Tailwind CSS", "Framer Motion", "Redux"] },
+        { category: "Backend", items: ["Node.js", "Express", "PostgreSQL", "Redis", "MongoDB"] },
+        { category: "Cloud", items: ["Docker", "AWS"] }
     ],
     services: [
+        // {
+        //     id: '01',
+        //     title: 'Gen AI Engineer',
+        //     description: 'Building AI-powered full-stack applications, intelligent systems, and modern web experiences.',
+        //     tags: ['GenAI', 'LLMs', 'AI Agents']
+        // },
         {
             id: '01',
-            title: 'Gen AI Engineer',
-            description: 'Building AI-powered full-stack applications, intelligent systems, and modern web experiences.',
-            tags: ['GenAI', 'LLMs', 'AI Agents']
-        },
-        {
-            id: '02',
             title: 'FullStack Developer',
             description: 'MERN stack applications with a problem-first mindset.',
             tags: ['MERN', 'Critical Thinking']
@@ -101,8 +108,8 @@ const initialData = {
     ],
     about: {
         images: {
-            swimmer: "/swimming.png",
-            portrait: "https://res.cloudinary.com/diod4o44f/image/upload/v1780074740/WhatsApp_Image_2026-05-29_at_22.41.17_ron8v8.jpg"
+            swimmer: SWIMMER_IMAGE,
+            portrait: PORTRAIT_IMAGE
         },
         location: "Based in Kolkata",
         role: "Developer",
@@ -110,7 +117,7 @@ const initialData = {
         bioBigTextItalic: "read new fantasy books",
         bioDescription1: "I am a developer focusing on digital experiences. My work sits at the intersection of technology and problem solving.",
         bioDescription2: "Currently based in Kolkata, working on things I enjoy.",
-        cvLink: "/path-to-your-cv.pdf"
+        cvLink: CV_PDF
     }
 };
 
@@ -119,7 +126,12 @@ const usePortfolioData = () => {
 
     return {
         data,
-        setData
+        setData,
+        BITEZZY_IMAGE,
+        LUMINA_IMAGE,
+        SWIMMER_IMAGE,
+        PORTRAIT_IMAGE,
+        CV_PDF
     };
 };
 
