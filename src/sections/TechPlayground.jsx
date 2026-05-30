@@ -102,7 +102,7 @@ const TechPlayground = () => {
                         y="50%"
                     >
                         <a
-                            href={about?.cvLink}
+                            href={about?.cvLink || "/resume.pdf"}
                             download
                             className="
             w-32 h-32 md:w-40 md:h-40
@@ -196,7 +196,7 @@ const TechPlayground = () => {
         "
                         >
                             <span className="font-serif italic text-sm">
-                                worth a look →
+                                take a look →
                             </span>
                         </div>
                     </Sticker>
